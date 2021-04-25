@@ -11,7 +11,7 @@ main.o: main.o ${HEADERS}
 	${COMPILER} -c main.cpp -o main.o
 
 web_scraper: ${OBJECTS}
-	${COMPILER} ${OBJECTS} -o web_scraper -I /usr/local/include/Poco -L /usr/local/lib -lPocoNet
+	${COMPILER} ${OBJECTS} -I /usr/local/include/Poco -L /usr/lib -lPocoNet -lPocoUtil -lPocoXML -lPocoJSON -lPocoFoundation -o web_scraper 
 
 clean:
 	-rm -f ${OBJECTS}

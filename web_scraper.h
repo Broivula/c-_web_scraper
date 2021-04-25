@@ -3,6 +3,7 @@
 #include <Poco/Net/HTTPRequest.h>
 #include <Poco/Net/HTTPClientSession.h>
 #include <Poco/Net/HTTPResponse.h>
+using std::endl;
 
 class WebScraper{
 
@@ -19,5 +20,5 @@ class WebScraper{
     int _number();
     void print_number();
 
-    bool fetch_page(Poco::Net::HTTPClientSession& session,  Poco::Net::HTTPRequest& request, Poco::Net::HTTPResponse& respone);
+    bool fetch_page();
 };
