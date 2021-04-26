@@ -35,22 +35,30 @@ int WebScraper::_number()
   return number;
 }
 
+string WebScraper::return_page_url(int src)
+{
+  return page_urls[src];
+}
+
 void WebScraper::print_number()
 {
   cout << "the private number is: " << _number() << ", yay!" << endl;
 }
 
-bool WebScraper::fetch_page()
+bool WebScraper::fetch_page(int src)
 {
   try
   {
-    URI uri("https://yle.fi/uutiset");
+    URI uri(return_page_url(src));
     HTTPClientSession session(uri.getHost(), uri.getPort());
 
     string path(uri.getPathAndQuery());
     if (path.empty()) path = "/";
 
     HTTPRequest req(HTTPRequest::HTTP_GET, path, HTTPMessage::HTTP_1_1);
+    req.setURI(uri.getPathAndQuery());
+    req.add("Authorization", "Basic YWw6NG01RzZsOG41UDlpMXAzTjZzOGQ=");
+    req.set("X-Dummy-Header", "bar");
     session.sendRequest(req);
 
     HTTPResponse res;

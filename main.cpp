@@ -8,7 +8,7 @@ int main(){
 
   unique_ptr<WebScraper> web_scraper;
   web_scraper.reset(new WebScraper());
-  result = web_scraper->fetch_page();
+  result = web_scraper->fetch_page(0);
 
   std::cout << "result is: " << result << std::endl;
   return 0;
